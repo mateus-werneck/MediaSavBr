@@ -82,6 +82,10 @@
   pip install beautifulsoup4 requests selenium urllib3 wxpython
   ```
 
+![image](https://user-images.githubusercontent.com/25112157/112429776-e3c67680-8d1b-11eb-8639-6a4c009e2e99.png)
+
+
+
 ### Instalação
 
 **Windows**
