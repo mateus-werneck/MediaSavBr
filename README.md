@@ -47,7 +47,7 @@
     </li>
     <li><a href="#como-usar">Como Usar</a></li>
     <li><a href="#o-que-falta">O que Falta</a></li>
-    <li><a href="#portugues-brasil">Português Brasil</a></li>
+    <li><a href="#português-brasil">Português Brasil</a></li>
   </ol>
 </details>
 
@@ -140,8 +140,6 @@
 1. Implementar método para salvar Videos do Twitter. Por enquanto apenas Imagens e GIFs
 
 2. Pequenos ajustes na UI e na estabilidade geral do programa
-
-
 
 
 ## Português Brasil
