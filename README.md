@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/mateus-werneck/MediaSavBr">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -58,7 +58,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![image](https://user-images.githubusercontent.com/25112157/112426321-8a0f7d80-8d16-11eb-9645-30a5f9fa94d9.png)
+
 
 
 ### Built With
