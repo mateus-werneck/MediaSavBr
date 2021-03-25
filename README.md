@@ -127,7 +127,7 @@
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-![image](https://user-images.githubusercontent.com/25112157/112511344-18185200-8d71-11eb-898e-49c7d959bda0.png)
+![image](https://user-images.githubusercontent.com/25112157/112512332-0aaf9780-8d72-11eb-96a8-3d7bb9ffd9c8.png)
 
 
 ![image](https://user-images.githubusercontent.com/25112157/112512195-e8b61500-8d71-11eb-8bba-6aae7a0b38e3.png)
