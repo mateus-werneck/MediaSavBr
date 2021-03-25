@@ -70,7 +70,7 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-### Prerequisites/Pré-requisitos
+### Prerequisites
 
 * Python
   ```sh
@@ -82,7 +82,7 @@
   pip install beautifulsoup4 requests selenium urllib3 wxpython
   ```
 
-### Installation/Instalação
+### Installation
 
 **Windows**
 
