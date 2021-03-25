@@ -122,7 +122,7 @@
      ```
 5. Execute MediaSaver
    ```sh
-    python3 main.py
+    python3 english_main.py
     ```
 
 <!-- USAGE EXAMPLES -->
