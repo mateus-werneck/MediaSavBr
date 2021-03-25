@@ -1,9 +1,9 @@
 import wx, re
 from decoding import getMedia, auth, killFirefox
 
+
 formato=' .jpg'
 button = 0
-
 def getTipo():
     global formato
     return formato
@@ -30,15 +30,15 @@ class Frame(wx.Frame):
         vbox = wx.BoxSizer(wx.VERTICAL) #Box sizer VERTICAL
         hbox1 = wx.BoxSizer(wx.HORIZONTAL) #Box sizer Horizontal
         #Static Text 1
-        st1 = wx.StaticText(panel, label='Link da foto ou video') #Static Text Above Field Camp
+        st1 = wx.StaticText(panel, label='Insira Um Link: ') #Static Text Above Field Camp
         st1.SetFont(font) #st1 Font
-        hbox1.Add(st1, flag=wx.RIGHT, border=8)#Inserting ST1 into the FRAME
+        hbox1.Add(st1, flag=wx.RIGHT | wx.TOP, border=8)#Inserting ST1 into the FRAME
         #Field 1
         self.field1 = wx.TextCtrl(panel, style=wx.TE_PROCESS_ENTER) #Field for Input
         hbox1.Add(self.field1, proportion=1)#Inserting FIELD1 into the FRAME
         vbox.Add(hbox1, flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP, border=10)#Adjusting FRAME
 
-        vbox.Add((-1, 20))# Adjust Vertical Position
+        vbox.Add((-1, 32))# Adjust Vertical Position
 
         #CheckBoxes Static Text
         hbox2 = wx.BoxSizer(wx.HORIZONTAL)
@@ -144,7 +144,7 @@ class Frame(wx.Frame):
                         button += 1
 
             else:
-                dlg2 = wx.MessageDialog(None, 'Deseja abrir no seu navegador?', '',
+                dlg2 = wx.MessageDialog(None, 'Deseja abrir no seu navegador?', 'Salvar ou Abrir No Navegador',
                 wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
                 resp = dlg2.ShowModal()
                 if resp == wx.ID_YES:
@@ -158,7 +158,7 @@ class Frame(wx.Frame):
                 else:
                     event.Skip()
         elif (self.stories != None):
-            dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', '',
+            dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', 'Salvar ou Abrir No Navegador',
             wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
             resp = dlg.ShowModal()
             if resp == wx.ID_YES:
@@ -184,7 +184,7 @@ class Frame(wx.Frame):
                 else:
                     event.Skip()
         elif (self.twt != None):
-            dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', '',
+            dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', 'Salvar ou Abrir No Navegador',
             wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
             resp = dlg.ShowModal()
             if resp == wx.ID_YES:
