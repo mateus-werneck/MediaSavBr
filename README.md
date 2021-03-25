@@ -5,7 +5,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/mateus-werneck/MidiasSave">
+  <a href="https://github.com/mateus-werneck/MidiaSave">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -20,9 +20,9 @@
     <br />
     <br />
     ·
-    <a href="https://github.com/mateus-werneck/MidiasSave/issues">Report Bug</a>
+    <a href="https://github.com/mateus-werneck/MidiaSave/issues">Report Bug</a>
     ·
-    <a href="https://github.com/mateus-werneck/MidiasSave/issues">Request Feature/Requisitar Novo Recurso</a>
+    <a href="https://github.com/mateus-werneck/MidiaSave/issues">Request Feature/Requisitar Novo Recurso</a>
   </p>
 </p>
 
@@ -88,7 +88,7 @@
 
 1. Download the latest release
    ```sh
-   Download MediaSaver.exe on https://github.com/mateus-werneck/MidiasSave/releases
+   Download MediaSaver.exe on https://github.com/mateus-werneck/MidiaSave/releases
    ```
 
 **Linux**
@@ -103,11 +103,11 @@
      ```
 3. Clone the repository
      ```sh
-    git clone  https://github.com/mateus-werneck/MidiasSave.git
+    git clone  https://github.com/mateus-werneck/MidiaSave.git
      ```
 4. Open Directory on Terminal 
     ```sh
-    cd MidiasSave
+    cd MidiaSave
      ```
 5. Execute MediaSaver
    ```sh
