@@ -103,7 +103,11 @@ Here's a blank template to get started:
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+* Python
+  ```sh
+    https://www.python.org/ftp/python/3.9.2/python-3.9.2-amd64.exe
+  ```
+
 * Dependencies
   ```sh
   pip install beautifulsoup4 requests selenium urllib3 wxpython
@@ -113,12 +117,7 @@ This is an example of how to list things you need to use the software and how to
 
 **Windows**
 
-1. Install Python if you haven't already 
-    ```sh
-    https://www.python.org/ftp/python/3.9.2/python-3.9.2-amd64.exe
-     ```
-
-2. Download the latest release
+1. Download the latest release
    ```sh
    Download MediaSaver.exe on https://github.com/mateus-werneck/MediaSaverBr/releases
    ```
