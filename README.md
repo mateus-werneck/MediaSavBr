@@ -68,7 +68,7 @@
 
 
 <!-- GETTING STARTED -->
-## Getting Started/Começando
+## Getting Started
 
 ### Prerequisites/Pré-requisitos
 
