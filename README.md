@@ -39,7 +39,7 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#getting-started">Getting Started/Começando</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites/Pre-requisitos</a></li>
         <li><a href="#installation">Installation/Instalação</a></li>
@@ -68,9 +68,9 @@
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Getting Started/Começando
 
-### Prerequisites
+### Prerequisites/Pré-requisitos
 
 * Python
   ```sh
@@ -82,7 +82,7 @@
   pip install beautifulsoup4 requests selenium urllib3 wxpython
   ```
 
-### Installation
+### Installation/Instalação
 
 **Windows**
 
