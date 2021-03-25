@@ -101,33 +101,25 @@ Here's a blank template to get started:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Windows
-
-1- Install Python if you haven't already (https://www.python.org/ftp/python/3.9.2/python-3.9.2-amd64.exe)
-
-2- Install required dependencies with "pip install beautifulsoup4 requests selenium urllib3 wxpython" on Command Prompt
-
-3- Download MediaSaver.exe on https://github.com/mateus-werneck/MediaSaverBr/releases
-
-5- Open MediaSaver.exe
-
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
-  npm install npm@latest -g
+  pip install beautifulsoup4 requests selenium urllib3 wxpython
   ```
 
 ### Installation
 
+Windows
+
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   Download MediaSaver.exe on https://github.com/mateus-werneck/MediaSaverBr/releases
    ```
 2. Install NPM packages
    ```sh
-   npm install
+   Execute MediaSaver.exe
    ```
 
 
