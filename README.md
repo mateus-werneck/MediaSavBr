@@ -93,8 +93,8 @@ Here's a blank template to get started:
 ### Built With
 
 * [Python]()
-* []()
-* []()
+* [Selenium]()
+* [wxPython]()
 
 
 
