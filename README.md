@@ -310,11 +310,12 @@
 
 <!-- USAGE EXAMPLES -->
 ## Como Usar
-![image](https://user-images.githubusercontent.com/25112157/112426467-c347ed80-8d16-11eb-8f08-f6facfd80c89.png)
+![image](https://user-images.githubusercontent.com/25112157/112513657-53b41b80-8d73-11eb-9c89-8b499f4db7b4.png)
 
 
-![image](https://user-images.githubusercontent.com/25112157/112426503-cd69ec00-8d16-11eb-8292-1092bb01394a.png)
-![image](https://user-images.githubusercontent.com/25112157/112426520-d22ea000-8d16-11eb-9817-cc1db90b8a4e.png)
+![image](https://user-images.githubusercontent.com/25112157/112513879-878f4100-8d73-11eb-90d9-b7a3391d4190.png)
+![image](https://user-images.githubusercontent.com/25112157/112513913-8eb64f00-8d73-11eb-8ec1-a94c85c92418.png)
+
 
 ![image](https://user-images.githubusercontent.com/25112157/112426724-2f2a5600-8d17-11eb-9394-879204d7db00.png)
 
