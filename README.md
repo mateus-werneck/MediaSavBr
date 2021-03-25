@@ -16,14 +16,12 @@
   <p align="center">
     Simple Python application to save Instagram and Twitter media (Pictures, Videos, GIFs, Stories) 
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/mateus-werneck/MediaSavBr/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/mateus-werneck/MediaSavBr/issues">Request Feature</a>
   </p>
 </p>
 
@@ -124,7 +122,7 @@
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Things to do
 
 1. Enable Twitter Videos saving (Only GIFs and Images for now)
 
