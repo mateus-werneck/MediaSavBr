@@ -310,7 +310,7 @@
 
 <!-- USAGE EXAMPLES -->
 ## Como Usar
-![image](https://user-images.githubusercontent.com/25112157/112513657-53b41b80-8d73-11eb-9c89-8b499f4db7b4.png)
+![image](https://user-images.githubusercontent.com/25112157/112514019-a8579680-8d73-11eb-8756-17773ecd4e40.png)
 
 
 ![image](https://user-images.githubusercontent.com/25112157/112513879-878f4100-8d73-11eb-90d9-b7a3391d4190.png)
