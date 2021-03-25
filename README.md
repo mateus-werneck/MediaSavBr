@@ -23,7 +23,7 @@
     ·
     <a href="https://github.com/mateus-werneck/MidiaSave/issues">Report Bug</a>
     ·
-    <a href="https://github.com/mateus-werneck/MidiaSave/issues">Request Feature/Requisitar Novo Recurso</a>
+    <a href="https://github.com/mateus-werneck/MidiaSave/issues">Request Feature</a>
   </p>
 </p>
 
