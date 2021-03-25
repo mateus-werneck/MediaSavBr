@@ -46,7 +46,7 @@
       </ul>
     </li>
     <li><a href="#como-usar">Como Usar</a></li>
-    <li><a href="#roadmap">O que Falta</a></li>
+    <li><a href="#o-que-falta">O que Falta</a></li>
   </ol>
 </details>
 
@@ -127,9 +127,9 @@
 
 ## O que Falta
 
-1. Enable Twitter Videos saving (Only GIFs and Images for now)
+1. Implementar método para salvar Videos do Twitter. Por enquanto apenas Imagens e GIFs
 
-2. General Improvements to UI and stability
+2. Pequenos ajustes na UI e na estabilidade geral do programa
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
