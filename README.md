@@ -33,7 +33,7 @@
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#sobre">Sobre o Projeto</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -53,7 +53,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Sobre O Projeto
 
 ![image](https://user-images.githubusercontent.com/25112157/112426321-8a0f7d80-8d16-11eb-9645-30a5f9fa94d9.png)
 
