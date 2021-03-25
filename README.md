@@ -278,7 +278,7 @@
 
 1. Baixe a versão mais recente
    ```sh
-   Download MediaSaver.exe on https://github.com/mateus-werneck/MidiaSave/releases
+   Baixe o arquivo MediaSaver.exe em https://github.com/mateus-werneck/MidiaSave/releases
    ```
 
 **Linux**
