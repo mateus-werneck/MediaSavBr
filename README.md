@@ -39,13 +39,13 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#como-começar">Como Começar</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#pré-requisitos">Pré-requisitos</a></li>
+        <li><a href="#instalação">Instalação</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#como-usar">Como Usar</a></li>
     <li><a href="#roadmap">Things to do</a></li>
   </ol>
 </details>
@@ -68,9 +68,9 @@
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Como Começar
 
-### Prerequisites
+### Pré-requisitos
 
 * Python
   ```sh
@@ -82,7 +82,7 @@
   pip install beautifulsoup4 requests selenium urllib3 wxpython
   ```
 
-### Installation
+### Instalação
 
 **Windows**
 
@@ -115,7 +115,7 @@
     ```
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Como Usar
 ![image](https://user-images.githubusercontent.com/25112157/112426467-c347ed80-8d16-11eb-8f08-f6facfd80c89.png)
 
 
