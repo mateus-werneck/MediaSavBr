@@ -101,7 +101,15 @@ Here's a blank template to get started:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+Windows
+
+1- Install Python if you haven't already (https://www.python.org/ftp/python/3.9.2/python-3.9.2-amd64.exe)
+
+2- Install required dependencies with "pip install beautifulsoup4 requests selenium urllib3 wxpython" on Command Prompt
+
+3- Download MediaSaver.exe on https://github.com/mateus-werneck/MediaSaverBr/releases
+
+5- Open MediaSaver.exe
 
 ### Prerequisites
 
