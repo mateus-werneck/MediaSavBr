@@ -128,7 +128,7 @@
 6.Create an Alias (Optional)
 
    ```sh
-    sudo nano ~/.bash_aliases then type alias mediasave='python3 ~/MidiaSave/english_main.py) save file and source ~/.bash_aliases
+    1. sudo nano ~/.bash_aliases 2.then type alias mediasave='python3 ~/MidiaSave/english_main.py' 3. save file 4. source ~/.bash_aliases
    ```
 <br />
 <!-- USAGE EXAMPLES -->
@@ -315,9 +315,10 @@
     python3 main.py
     ```
 6.Criar um Alias (Optional)
-    ```sh
-    sudo nano ~/.bash_aliases then type alias mediasave='python3 ~/MidiaSave/english_main.py)' save file and execute source ~/.bash_aliases
-    ```
+
+   ```sh
+    1. sudo nano ~/.bash_aliases 2.then type alias mediasave='python3 ~/MidiaSave/english_main.py' 3. save file 4. source ~/.bash_aliases
+   ```
 <br />
 <!-- USAGE EXAMPLES -->
 ## Como Usar
