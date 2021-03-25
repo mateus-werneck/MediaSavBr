@@ -126,9 +126,10 @@
     python3 english_main.py
     ```
 6.Create an Alias (Optional)
-    ```sh
+
+   ```sh
     sudo nano ~/.bash_aliases then type alias mediasave='python3 ~/MidiaSave/english_main.py) save file and source ~/.bash_aliases
-    ```
+   ```
 <br />
 <!-- USAGE EXAMPLES -->
 ## Usage
