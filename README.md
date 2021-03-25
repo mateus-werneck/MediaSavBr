@@ -18,7 +18,7 @@
     Aplicação em Python para salvar arquivos de mídia do Instragram e Twitter (Imagens, Videos, GIFs e Stories)
     <br /> 
     .
-    <a href="https://github.com/mateus-werneck/MidiaSave#português-brasil"><Português Brasileiro>  
+  <a href="https://github.com/mateus-werneck/MidiaSave#português-brasil"><Português Brasileiro</a>  
     <br />
     <br />
     <br />
