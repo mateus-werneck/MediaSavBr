@@ -180,7 +180,7 @@
     ·
     <a href="https://github.com/mateus-werneck/MidiaSave/issues">Report Bug</a>
     ·
-    <a href="https://github.com/mateus-werneck/MidiaSave/issues">Request Feature/Requisitar Novo Recurso</a>
+    <a href="https://github.com/mateus-werneck/MidiaSave/issues">Request Feature</a>
   </p>
 </p>
 
@@ -191,7 +191,7 @@
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
-      <a href="#sAbout-the-project">About The project</a>
+      <a href="#sAbout-the-project">About The Project</a>
       <ul>
         <li><a href="#Built-with">Built with</a></li>
       </ul>
@@ -211,7 +211,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About the Project
+## About The Project
 
 ![image](https://user-images.githubusercontent.com/25112157/112426321-8a0f7d80-8d16-11eb-9645-30a5f9fa94d9.png)
 
