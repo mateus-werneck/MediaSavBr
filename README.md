@@ -5,7 +5,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/mateus-werneck/MediaSavBr">
+  <a href="https://github.com/mateus-werneck/MidiasSave">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -14,14 +14,15 @@
   <p align="center">
     Simple Python application to save Instagram and Twitter media (Pictures, Videos, GIFs, Stories)
     <br />
+    <br />
     Aplicação em Python para salvar arquivos de mídia do Instragram e Twitter (Imagens, Videos, GIFs e Stories)
     <br />
     <br />
     <br />
     ·
-    <a href="https://github.com/mateus-werneck/MediaSavBr/issues">Report Bug</a>
+    <a href="https://github.com/mateus-werneck/MidiasSave/issues">Report Bug</a>
     ·
-    <a href="https://github.com/mateus-werneck/MediaSavBr/issues">Request Feature</a>
+    <a href="https://github.com/mateus-werneck/MidiasSave/issues">Request Feature/Requisitar Novo Recurso</a>
   </p>
 </p>
 
@@ -46,7 +47,6 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Things to do</a></li>
-    <li><a href="#português">Português brasileiro</a></li>
   </ol>
 </details>
 
@@ -88,14 +88,14 @@
 
 1. Download the latest release
    ```sh
-   Download MediaSaver.exe on https://github.com/mateus-werneck/MediaSaverBr/releases
+   Download MediaSaver.exe on https://github.com/mateus-werneck/MidiasSave/releases
    ```
 
 **Linux**
 
 1. Install Python if you haven't already 
     ```sh
-    sudo apt install python3.8 3- 
+    sudo apt install python3.9
      ```
 2. Install geckdriver(Selenium)
     ```sh
@@ -103,11 +103,11 @@
      ```
 3. Clone the repository
      ```sh
-    git clone  https://github.com/mateus-werneck/MediaSaverBr.git
+    git clone  https://github.com/mateus-werneck/MidiasSave.git
      ```
 4. Open Directory on Terminal 
     ```sh
-    cd MediaSaverBr
+    cd MidiasSave
      ```
 5. Execute MediaSaver
    ```sh
@@ -134,8 +134,6 @@
 
 2. General Improvements to UI and stability
 
-
-## Português brasileiro
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
