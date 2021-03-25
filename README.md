@@ -211,7 +211,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <summary><h2 style="display: inline-block">Índice</h2></summary>
   <ol>
     <li>
      <a href="#sobre-o-projeto">Sobre o Projeto</a>
