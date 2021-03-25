@@ -240,7 +240,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre O Projeto
 
-![image](https://user-images.githubusercontent.com/25112157/112426321-8a0f7d80-8d16-11eb-9645-30a5f9fa94d9.png)
+![image](https://user-images.githubusercontent.com/25112157/112514119-bd342a00-8d73-11eb-9501-aeec9d712ebb.png)
 
 
 
