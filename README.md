@@ -56,7 +56,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![image](https://user-images.githubusercontent.com/25112157/112426321-8a0f7d80-8d16-11eb-9645-30a5f9fa94d9.png)
+![image](https://user-images.githubusercontent.com/25112157/112511254-03d45500-8d71-11eb-8db3-434f291b0869.png)
+
 
 
 
@@ -126,13 +127,15 @@
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-![image](https://user-images.githubusercontent.com/25112157/112426467-c347ed80-8d16-11eb-8f08-f6facfd80c89.png)
+![image](https://user-images.githubusercontent.com/25112157/112511344-18185200-8d71-11eb-898e-49c7d959bda0.png)
 
 
-![image](https://user-images.githubusercontent.com/25112157/112426503-cd69ec00-8d16-11eb-8292-1092bb01394a.png)
-![image](https://user-images.githubusercontent.com/25112157/112426520-d22ea000-8d16-11eb-9817-cc1db90b8a4e.png)
+![image](https://user-images.githubusercontent.com/25112157/112511451-31b99980-8d71-11eb-9b82-25c163594a8a.png)
+![image](https://user-images.githubusercontent.com/25112157/112511494-39793e00-8d71-11eb-9865-2416aef1dc0a.png)
 
-![image](https://user-images.githubusercontent.com/25112157/112426724-2f2a5600-8d17-11eb-9394-879204d7db00.png)
+
+![image](https://user-images.githubusercontent.com/25112157/112511549-472ec380-8d71-11eb-91ce-1a546dd89475.png)
+
 
 
 ## Things to do
