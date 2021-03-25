@@ -35,7 +35,7 @@
     <li>
       <a href="#sobre-o-projeto">Sobre o Projeto</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#ferramentas-utilizadas">Ferramentas Utilizadas</a></li>
       </ul>
     </li>
     <li>
@@ -46,7 +46,7 @@
       </ul>
     </li>
     <li><a href="#como-usar">Como Usar</a></li>
-    <li><a href="#roadmap">Things to do</a></li>
+    <li><a href="#roadmap">O que Falta</a></li>
   </ol>
 </details>
 
@@ -59,7 +59,7 @@
 
 
 
-### Built With
+### Ferramentas Utilizadas
 
 * [Python](https://www.python.org/)
 * [Selenium](https://www.selenium.dev/)
@@ -77,7 +77,7 @@
     https://www.python.org/ftp/python/3.9.2/python-3.9.2-amd64.exe
   ```
 
-* Dependencies
+* Dependências
   ```sh
   pip install beautifulsoup4 requests selenium urllib3 wxpython
   ```
@@ -86,30 +86,30 @@
 
 **Windows**
 
-1. Download the latest release
+1. Baixe a versão mais recente
    ```sh
    Download MediaSaver.exe on https://github.com/mateus-werneck/MidiaSave/releases
    ```
 
 **Linux**
 
-1. Install Python if you haven't already 
+1. Instale o Python 
     ```sh
     sudo apt install python3.9
      ```
-2. Install geckdriver(Selenium)
+2. Instale o geckdriver(Selenium)
     ```sh
     https://github.com/mozilla/geckodriver/releases
      ```
-3. Clone the repository
+3. Clone o repositório
      ```sh
     git clone  https://github.com/mateus-werneck/MidiaSave.git
      ```
-4. Open Directory on Terminal 
+4. Abra o diretório no terminal
     ```sh
     cd MidiaSave
      ```
-5. Execute MediaSaver
+5. Execute o MediaSaver
    ```sh
     python3 main.py
     ```
@@ -125,10 +125,7 @@
 ![image](https://user-images.githubusercontent.com/25112157/112426724-2f2a5600-8d17-11eb-9394-879204d7db00.png)
 
 
-
-
-<!-- ROADMAP -->
-## Things to do
+## O que Falta
 
 1. Enable Twitter Videos saving (Only GIFs and Images for now)
 
