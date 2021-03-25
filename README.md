@@ -104,7 +104,7 @@ Here's a blank template to get started:
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* Dependencies
   ```sh
   pip install beautifulsoup4 requests selenium urllib3 wxpython
   ```
