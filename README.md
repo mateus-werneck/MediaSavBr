@@ -46,6 +46,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Things to do</a></li>
+    <li><a href="#português">Português Brasileiro</a></li>
   </ol>
 </details>
 
@@ -60,9 +61,9 @@
 
 ### Built With
 
-* [Python]()
-* [Selenium]()
-* [wxPython]()
+* [Python](https://www.python.org/)
+* [Selenium](https://www.selenium.dev/)
+* [wxPython](https://www.wxpython.org/)
 
 
 
