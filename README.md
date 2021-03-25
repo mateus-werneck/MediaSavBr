@@ -39,7 +39,7 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started/Começando</a>
+      <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
@@ -68,7 +68,7 @@
 
 
 <!-- GETTING STARTED -->
-## Getting Started/Começando
+## Getting Started
 
 ### Prerequisites/Pré-requisitos
 
