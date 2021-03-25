@@ -39,10 +39,10 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started/começando">Getting Started/Começando</a>
+      <a href="#getting-started">Getting Started/Começando</a>
       <ul>
-        <li><a href="#prerequisites/pré-requisitos">Prerequisites/Pre-requisitos</a></li>
-        <li><a href="#installation/instalação">Installation/Instalação</a></li>
+        <li><a href="#prerequisites">Prerequisites/Pre-requisitos</a></li>
+        <li><a href="#installation">Installation/Instalação</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
