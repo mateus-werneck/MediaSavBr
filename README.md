@@ -13,6 +13,7 @@
 
   <p align="center">
     Simple Python application to save Instagram and Twitter media (Pictures, Videos, GIFs, Stories)
+    <br />
     Aplicação em Python para salvar arquivos de mídia do Instragram e Twitter (Imagens, Videos, GIFs e Stories)
     <br />
     <br />
