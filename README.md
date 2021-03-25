@@ -77,6 +77,9 @@
     https://www.python.org/ftp/python/3.9.2/python-3.9.2-amd64.exe
   ```
 
+![image](https://user-images.githubusercontent.com/25112157/112496747-bf8e8800-8d63-11eb-89ab-b777142e5566.png)
+
+
 * Dependências
   ```sh
   pip install beautifulsoup4 requests selenium urllib3 wxpython
