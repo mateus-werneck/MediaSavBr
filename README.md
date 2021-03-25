@@ -12,7 +12,8 @@
   <h3 align="center">Simple Media Saver</h3>
 
   <p align="center">
-    Simple Python application to save Instagram and Twitter media (Pictures, Videos, GIFs, Stories) 
+    Simple Python application to save Instagram and Twitter media (Pictures, Videos, GIFs, Stories)
+    Aplicação em Python para salvar arquivos de mídia do Instragram e Twitter (Imagens, Videos, GIFs e Stories)
     <br />
     <br />
     <br />
