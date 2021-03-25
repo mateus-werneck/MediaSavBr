@@ -130,6 +130,7 @@
    ```sh
     1. sudo nano ~/.bash_aliases  2.Then type: alias mediasave='python3 ~/MidiaSave/english_main.py'  3. Save file  4. source ~/.bash_aliases
    ```
+
 <br />
 <!-- USAGE EXAMPLES -->
 ## Usage
