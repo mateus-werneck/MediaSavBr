@@ -134,6 +134,7 @@
 <br />
 <!-- USAGE EXAMPLES -->
 ## Usage
+
 ![image](https://user-images.githubusercontent.com/25112157/112512332-0aaf9780-8d72-11eb-96a8-3d7bb9ffd9c8.png)
 
 
@@ -323,6 +324,7 @@
 <br />
 <!-- USAGE EXAMPLES -->
 ## Como Usar
+
 ![image](https://user-images.githubusercontent.com/25112157/112514019-a8579680-8d73-11eb-8756-17773ecd4e40.png)
 
 
