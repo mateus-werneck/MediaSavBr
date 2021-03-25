@@ -1,5 +1,3 @@
-[![Forks][forks-shield]][forks-url]
-[![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -46,7 +44,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Things to do</a></li>
-    <li><a href="#português">Português Brasileiro</a></li>
+    <li><a href="#português">Português brasileiro</a></li>
   </ol>
 </details>
 
@@ -135,6 +133,7 @@
 2. General Improvements to UI and stability
 
 
+## Português brasileiro
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
