@@ -191,7 +191,7 @@
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
-      <a href="#sAbout-the-project">About The Project</a>
+      <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#Built-with">Built with</a></li>
       </ul>
@@ -253,30 +253,30 @@
 
 **Windows**
 
-1. Baixe a versão mais recente
+1. Download the latest release
    ```sh
    Download MediaSaver.exe on https://github.com/mateus-werneck/MidiaSave/releases
    ```
 
 **Linux**
 
-1. Instale o Python 
+1. Install Python 
     ```sh
     sudo apt install python3.9
      ```
-2. Instale o geckdriver(Selenium)
+2. Install geckdriver(Selenium)
     ```sh
     https://github.com/mozilla/geckodriver/releases
      ```
-3. Clone o repositório
+3. Clone the repository
      ```sh
     git clone  https://github.com/mateus-werneck/MidiaSave.git
      ```
-4. Abra o diretório no terminal
+4. Open the directory
     ```sh
     cd MidiaSave
      ```
-5. Execute o MediaSaver
+5. Execute MediaSaver
    ```sh
     python3 main.py
     ```
@@ -294,9 +294,9 @@
 
 ## Things to do
 
-1. Implementar método para salvar Videos do Twitter. Por enquanto apenas Imagens e GIFs
+1. Add Twitter video saving functionality (Only Images and Gif for now)
 
-2. Pequenos ajustes na UI e na estabilidade geral do programa
+2. Improvements to the UI and general stability
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
