@@ -113,16 +113,10 @@ This is an example of how to list things you need to use the software and how to
 
 Windows
 
-1. Clone the repo
+1. Download the latest release
    ```sh
    Download MediaSaver.exe on https://github.com/mateus-werneck/MediaSaverBr/releases
    ```
-2. Install NPM packages
-   ```sh
-   Execute MediaSaver.exe
-   ```
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
