@@ -39,7 +39,7 @@
   <h3 align="center">Simple Media Saver</h3>
 
   <p align="center">
-    project_description
+    Simple Python application to save Instagram and Twitter media (Pictures, Videos, GIFs, Stories) 
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
