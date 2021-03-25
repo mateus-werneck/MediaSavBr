@@ -113,7 +113,12 @@ This is an example of how to list things you need to use the software and how to
 
 Windows
 
-1. Download the latest release
+1. Install Python if you haven't already 
+ ```sh
+  https://www.python.org/ftp/python/3.9.2/python-3.9.2-amd64.exe
+   ```
+
+2. Download the latest release
    ```sh
    Download MediaSaver.exe on https://github.com/mateus-werneck/MediaSaverBr/releases
    ```
