@@ -47,6 +47,7 @@
     </li>
     <li><a href="#Usage">Usage</a></li>
     <li><a href="#things-to-do">Things to do</a></li>
+    <li><a href="#português-brasil">Português Brasil</a></li>
   </ol>
 </details>
 
