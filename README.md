@@ -34,8 +34,8 @@
   <ol>
     <li>
       <a href="#português-brasil">Português Brasil</a>
-      <a href="#sobre-o-projeto">Sobre o Projeto</a>
-      <ul>
+     <ul>
+        <li><a href="#sobre-o-projeto">Sobre o Projeto</a><li>
         <li><a href="#ferramentas-utilizadas">Ferramentas Utilizadas</a></li>
       </ul>
     </li>
