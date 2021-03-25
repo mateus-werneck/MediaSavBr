@@ -148,8 +148,8 @@ def getMedia(url, formato, response, media):
 
 def auth(button):
     if (button == 0):
-        username = 'pythonauthusr1234'
-        password = 'instagramauthpass123'
+        username = 'username'
+        password = 'password'
         firefox.get("https://www.instagram.com/accounts/login/")
         time.sleep(1)
         usern = firefox.find_element_by_name("username")
@@ -163,7 +163,8 @@ def auth(button):
         title = firefox.title
         if (title == "Login • Instagram"):
             time.sleep(1)
-            username = 'pythonauthusr12345'
+            username = 'username'
+            password = 'password'
             usern = firefox.find_element_by_name("username")
             usern.send_keys(username)
             passw = firefox.find_element_by_name("password")
