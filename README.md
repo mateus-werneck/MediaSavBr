@@ -120,7 +120,12 @@
 <!-- USAGE EXAMPLES -->
 ## Usage
 ![image](https://user-images.githubusercontent.com/25112157/112426467-c347ed80-8d16-11eb-8f08-f6facfd80c89.png)
+
+
 ![image](https://user-images.githubusercontent.com/25112157/112426503-cd69ec00-8d16-11eb-8292-1092bb01394a.png)
+
+
+
 ![image](https://user-images.githubusercontent.com/25112157/112426520-d22ea000-8d16-11eb-9817-cc1db90b8a4e.png)
 
 
