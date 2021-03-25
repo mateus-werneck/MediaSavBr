@@ -111,7 +111,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-Windows
+**Windows**
 
 1. Install Python if you haven't already 
     ```sh
@@ -123,7 +123,7 @@ Windows
    Download MediaSaver.exe on https://github.com/mateus-werneck/MediaSaverBr/releases
    ```
 
-Linux
+**Linux**
 
 1. Install Python if you haven't already 
     ```sh
