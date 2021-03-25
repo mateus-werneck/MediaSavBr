@@ -82,7 +82,8 @@
   pip install beautifulsoup4 requests selenium urllib3 wxpython
   ```
 
-![cmd](https://user-images.githubusercontent.com/25112157/112495903-121b7480-8d63-11eb-977c-cf0285ef2d67.png)
+  
+  ![cmd](https://user-images.githubusercontent.com/25112157/112495903-121b7480-8d63-11eb-977c-cf0285ef2d67.png)
 
 
 
