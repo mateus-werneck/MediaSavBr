@@ -93,10 +93,6 @@ class Frame(wx.Frame):
             self.Destroy()
             killFirefox()
             os.remove(os.getcwd() + '/geckodriver.log')
-            if (os.path.isfile(os.getcwd() + '/temp.txt') == True):
-                os.remove(os.getcwd() + '/temp.txt')
-            if (os.path.isfile(os.getcwd() + '/items.json') == True):
-                os.remove(os.getcwd() + '/items.json')
             exit()
 
         else:
@@ -126,6 +122,18 @@ class Frame(wx.Frame):
         wx.MessageBox('This can take up to 1 minute', 'Please stand by',
         wx.OK | wx.ICON_INFORMATION)
 
+    def MessageErro(self):
+        wx.MessageBox('Error. Try again!', '',
+        wx.OK | wx.ICON_INFORMATION)
+
+    def MessageAuth(self):
+        wx.MessageBox("Couldn't Login to Instagram", 'Erro de Autenticação',
+        wx.OK | wx.ICON_INFORMATION)
+
+    def MessageM4s(self):
+        wx.MessageBox('Unsupported video format. Try another.', 'Error',
+        wx.OK | wx.ICON_INFORMATION)
+
 
 
     #Save Button
@@ -147,7 +155,11 @@ class Frame(wx.Frame):
                     if(getMedia(self.url, self.tipo, self.response, self.posts) == True):
                         self.MessageSave()
                         button += 1
+                    else:
+                        self.MessageErro()
 
+                else:
+                    self.MessageAuth()
             else:
                 dlg2 = wx.MessageDialog(None, 'Would you like to open in your browser?', '',
                 wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
@@ -159,6 +171,11 @@ class Frame(wx.Frame):
                         if(getMedia(self.url, self.tipo, self.response, self.posts) == True):
                             self.MessageSave()
                             button += 1
+                        else:
+                            self.MessageErro()
+
+                    else:
+                        self.MessageAuth()
 
                 else:
                     event.Skip()
@@ -173,6 +190,11 @@ class Frame(wx.Frame):
                     if(getMedia(self.url, self.tipo, self.response, self.stories) == True):
                         self.MessageSave()
                         button += 1
+                    else:
+                        self.MessageErro()
+
+                else:
+                    self.MessageAuth()
 
             else:
                 dlg2 = wx.MessageDialog(None, 'Would you like to open in your browser?', '',
@@ -185,6 +207,11 @@ class Frame(wx.Frame):
                         if(getMedia(self.url, self.tipo, self.response, self.stories) == True):
                             self.MessageSave()
                             button += 1
+                        else:
+                            self.MessageErro()
+
+                    else:
+                        self.MessageAuth()
 
                 else:
                     event.Skip()
@@ -197,6 +224,11 @@ class Frame(wx.Frame):
                 self.response='Computador'
                 if(getMedia(self.url, self.tipo, self.response, self.twt) == True):
                     self.MessageSave()
+                elif (getMedia(self.url, self.tipo, self.response, self.twt) == False):
+                    self.MessageM4s()
+                else:
+                    self.MessageErro()
+
             else:
                 dlg2 = wx.MessageDialog(None, 'Would you like to open in your browser?', '',
                 wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
@@ -206,6 +238,8 @@ class Frame(wx.Frame):
                     self.response='Navegador'
                     if(getMedia(self.url, self.tipo, self.response, self.twt) == True):
                         self.MessageSave()
+                    else:
+                        self.MessageErro()
 
         else:
             dlg3 = wx.MessageBox('Please insert a link', '',
