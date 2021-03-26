@@ -86,12 +86,17 @@ class Frame(wx.Frame):
 
     #CloseButton Event
     def OnCloseWindow(self, event):
-        dial = wx.MessageDialog(None, 'Do you want to Close?', 'Exit',
+        dial = wx.MessageDialog(None, 'Deseja sair?', 'Sair',
         wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
         resp = dial.ShowModal()
         if resp == wx.ID_YES:
             self.Destroy()
             killFirefox()
+            os.remove(os.getcwd() + '/geckodriver.log')
+            if (os.path.isfile(os.getcwd() + '/temp.txt') == True):
+                os.remove(os.getcwd() + '/temp.txt')
+            if (os.path.isfile(os.getcwd() + '/items.json') == True):
+                os.remove(os.getcwd() + '/items.json')
             exit()
 
         else:
