@@ -88,7 +88,7 @@
   ```
 
   
-    ![cmd](https://user-images.githubusercontent.com/25112157/112495903-121b7480-8d63-11eb-977c-cf0285ef2d67.png)
+    ![image](https://user-images.githubusercontent.com/25112157/112690456-8f75e080-8e5a-11eb-93ae-322ace72991b.png)
 
 
 
@@ -279,7 +279,7 @@
   ```
 
   
-    ![cmd](https://user-images.githubusercontent.com/25112157/112495903-121b7480-8d63-11eb-977c-cf0285ef2d67.png)
+    ![image](https://user-images.githubusercontent.com/25112157/112690480-97ce1b80-8e5a-11eb-91cb-e622f385d8dc.png)
 
 
 
