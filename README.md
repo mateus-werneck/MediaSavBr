@@ -84,7 +84,7 @@
 
 * Dependencies
   ```sh
-  pip install beautifulsoup4 requests selenium urllib3 wxpython
+  pip install beautifulsoup4 requests selenium urllib3 wxpython moviepy natsort
   ```
 
   
@@ -149,7 +149,7 @@
 
 ## Things to do
 
-1. Add Twitter video saving functionality (Only Images and Gif for now)
+~~1. Add Twitter video saving functionality (Only Images and Gif for now)~~
 
 2. Improvements to the UI and general stability
 
@@ -275,7 +275,7 @@
 
 * Dependências
   ```sh
-  pip install beautifulsoup4 requests selenium urllib3 wxpython
+  pip install beautifulsoup4 requests selenium urllib3 wxpython moviepy natsort
   ```
 
   
@@ -337,7 +337,7 @@
 
 ## O que Falta
 
-1. Implementar método para salvar Videos do Twitter. Por enquanto apenas Imagens e GIFs
+~~1. Implementar método para salvar Videos do Twitter. Por enquanto apenas Imagens e GIFs~~
 
 2. Pequenos ajustes na UI e na estabilidade geral do programa
 
