@@ -6,6 +6,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from moviepy.editor import *
+from natsort import natsorted
 
 
 firefox_options = Options()
@@ -106,7 +108,7 @@ def getMedia(url, formato, response, media):
 
             elif(formato == ' .mp4'):
                 firefox.get(url)
-                time.sleep(4)
+                time.sleep(6)
                 log = firefox.execute_script("var performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; var network = performance.getEntries() || {}; return network;")
                 video =''
                 with open("items.json", "w") as jsonFile:
@@ -115,13 +117,80 @@ def getMedia(url, formato, response, media):
                 with open ("items.json", "r") as jsonFile:
                     json_decoded = json.load(jsonFile)
                     for i in range(len(json_decoded)):
-                        if (re.search(r'https://video.twimg.com/(.*?).ts', json_decoded[i]['name']) != None):
+                        if (re.match('https://video.twimg.com/', json_decoded[i]['name']) != None):
                             video = json_decoded[i]['name']
                             break
                 jsonFile.close()
-                urllib.request.urlretrieve(video, os.path.basename(video))
-                return True
+                m3u8c = re.search('https://video.twimg.com(.*?)?tag=', video)
+                encoded = []
+                if (m3u8c == None):
+                    urllib.request.urlretrieve(video, 'temp.txt')
+                    with open ("temp.txt", "r") as temp:
+                        for line in temp:
+                            if(re.search(r'.ts', line) != None):
+                                encoded.append('https://video.twimg.com' + line)
+                            continue
+                    temp.close()
+                    for i in range(len(encoded)):
+                        name ='temp' + '0' + str(i) + ' .ts'
+                        urllib.request.urlretrieve(encoded[i], name)
+                    L =[]
+                    directory = os.getcwd()
+                    for root, dirs, temps in os.walk(directory):
+                        temps = natsorted(temps)
+                        for temp in temps:
+                            if os.path.splitext(temp)[1] == '.ts':
+                                tempPath = os.path.join(root, temp)
+                                video = VideoFileClip(tempPath)
+                                L.append(video)
+                    twitter = concatenate_videoclips(L)
+                    size = len(decoded)
+                    name = 'twitter' + '0' + str(size) + '.mp4'
+                    twitter.to_videofile(name)
+                    for i in range(len(encoded)):
+                        os.remove(directory + '/temp' + '0' + str(i) + ' .ts')
+                    os.remove(directory + '/temp.txt')
+                    os.remove(directory + '/items.json')
+                    return True
 
+                elif (m3u8c != None):
+                    urllib.request.urlretrieve(video, 'temp.txt')
+                    with open ("temp.txt", "r") as temp:
+                        for line in temp:
+                            if(re.search(r'.m3u8', line) != None):
+                                m3u8c2 = 'https://video.twimg.com' + line
+                            continue
+                    temp.close()
+                    urllib.request.urlretrieve(m3u8c2, 'temp.txt')
+                    with open ("temp.txt", "r") as temp:
+                        for line in temp:
+                            if(re.search(r'.ts', line) != None):
+                                encoded.append('https://video.twimg.com' + line)
+                            continue
+                    temp.close()
+                    for i in range(len(encoded)):
+                        name ='temp' + '0' + str(i) + ' .ts'
+                        urllib.request.urlretrieve(encoded[i], name)
+                    L =[]
+                    directory = os.getcwd()
+                    for root, dirs, temps in os.walk(directory):
+                        temps = natsorted(temps)
+                        for temp in temps:
+                            if os.path.splitext(temp)[1] == '.ts':
+                                tempPath = os.path.join(root, temp)
+                                video = VideoFileClip(tempPath)
+                                L.append(video)
+                    twitter = concatenate_videoclips(L)
+                    size = len(decoded)
+                    name = 'twitter' + '0' + str(size) + '.mp4'
+                    twitter.to_videofile(name)
+                    for i in range(len(encoded)):
+                        os.remove(directory + '/temp' + '0' + str(i) + ' .ts')
+                    os.remove(directory + '/temp.txt')
+                    os.remove(directory + '/items.json')
+                    os.remove(directory + '/geckodriver.log')
+                    decoded.append('twittervideo')
+                    return True
 
         elif(response == 'Navegador'):
             if (formato == 'jpg'):
@@ -148,8 +217,8 @@ def getMedia(url, formato, response, media):
 
 def auth(button):
     if (button == 0):
-        username = 'username'
-        password = 'password'
+        username = 'pythonauthusr1234'
+        password = 'instagramauthpass123'
         firefox.get("https://www.instagram.com/accounts/login/")
         time.sleep(1)
         usern = firefox.find_element_by_name("username")
@@ -163,8 +232,7 @@ def auth(button):
         title = firefox.title
         if (title == "Login • Instagram"):
             time.sleep(1)
-            username = 'username'
-            password = 'password'
+            username = 'pythonauthusr12345'
             usern = firefox.find_element_by_name("username")
             usern.send_keys(username)
             passw = firefox.find_element_by_name("password")
