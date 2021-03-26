@@ -118,7 +118,7 @@ class Frame(wx.Frame):
         wx.OK | wx.ICON_INFORMATION)
     #Wait MessageBox
     def Aguarde(self):
-        wx.MessageBox('This can take up to 30 seconds', 'Wait a momente',
+        wx.MessageBox('This can take up to 1 minute', 'Please stand by',
         wx.OK | wx.ICON_INFORMATION)
 
 
