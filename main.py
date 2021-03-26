@@ -1,8 +1,8 @@
-import wx, re
+import wx, re, os
 from decoding import getMedia, auth, killFirefox
 
 
-formato=' .jpg'
+formato='.jpg'
 button = 0
 def getTipo():
     global formato
@@ -92,6 +92,11 @@ class Frame(wx.Frame):
         if resp == wx.ID_YES:
             self.Destroy()
             killFirefox()
+            os.remove(os.getcwd() + '/geckodriver.log')
+            if (os.path.isfile(os.getcwd() + '/temp.txt') == True):
+                os.remove(os.getcwd() + '/temp.txt')
+            if (os.path.isfile(os.getcwd() + '/items.json') == True):
+                os.remove(os.getcwd() + '/items.json')
             exit()
 
         else:
@@ -102,11 +107,11 @@ class Frame(wx.Frame):
         state2 = self.rb2.GetValue()
         state3 = self.rb3.GetValue()
         if (state2 == True):
-            self.tipo=' .mp4'
+            self.tipo='.mp4'
         elif (state3 == True):
             self.tipo= 'gif'
         else:
-            self.tipo=' .jpg'
+            self.tipo='.jpg'
         setTipo(self.tipo)
     #Save to PC Message
     def MessageSave(self):
