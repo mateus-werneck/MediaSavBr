@@ -1,4 +1,4 @@
-import requests, re, time, urllib, os, webbrowser, json
+import requests, re, time, urllib, os, webbrowser, json, tempfile, shutil
 from bs4 import BeautifulSoup
 from selenium.webdriver.firefox.options import Options
 from selenium import webdriver
@@ -108,6 +108,7 @@ def getMedia(url, formato, response, media):
 
 
     elif(media.group(0) == 'https://twitter.com/'):
+        temp_dir = tempfile.mkdtemp()
         if (response == 'Computador'):
             if (formato == '.jpg'):
                 firefox.get(url)
@@ -149,92 +150,133 @@ def getMedia(url, formato, response, media):
                 time.sleep(10)
                 log = firefox.execute_script("var performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; var network = performance.getEntries() || {}; return network;")
                 video =''
-                with open("items.json", "w") as jsonFile:
+                with open(temp_dir + "/items.json", "w") as jsonFile:
                     json.dump(log, jsonFile, indent = 6)
                 jsonFile.close()
-                with open ("items.json", "r") as jsonFile:
+                with open (temp_dir + "/items.json", "r") as jsonFile:
                     json_decoded = json.load(jsonFile)
                     for i in range(len(json_decoded)):
-                        if (re.match('https://video.twimg.com/', json_decoded[i]['name']) != None):
+                        if (re.match(r'https://video.twimg.com/', json_decoded[i]['name']) != None):
                             video = json_decoded[i]['name']
                             break
                 jsonFile.close()
-                m3u8c = re.search('https://video.twimg.com(.*?)?tag=', video)
-                encoded = []
-                if (m3u8c == None):
-                    urllib.request.urlretrieve(video, 'temp.txt')
-                    with open ("temp.txt", "r") as temp:
-                        for line in temp:
-                            if(re.search(r'.ts', line) != None):
-                                encoded.append('https://video.twimg.com' + line)
-                            continue
-                    temp.close()
+                if (re.search(r'https://video.twimg.com/(.*?).m3u8', video) != None):
+                    m3u8c = re.search(r'https://video.twimg.com(.*?)?tag=', video)
+                    encoded = []
+                    if (m3u8c == None):
+                        tipo='m4s'
+                        urllib.request.urlretrieve(video, temp_dir + '/temp.txt')
+                        with open (temp_dir + "/temp.txt", "r") as tempF:
+                            for line in tempF:
+                                if(re.search(r'.ts', line) != None):
+                                    encoded.append('https://video.twimg.com' + line)
+                                    tipo ='ts'
+                        tempF.close()
+                        directory = os.getcwd()
+                        collection =[]
+                        if(tipo == 'ts'):
+                            for i in range(len(encoded)):
+                                name = temp_dir + '/temp' + '0' + str(i) + ' .ts'
+                                urllib.request.urlretrieve(encoded[i], name)
+                                video = VideoFileClip(name)
+                                collection.append(video)
+                                twitter = concatenate_videoclips(collection)
+                                size = len(decoded)
+                                final_name = 'twitter' + '0' + str(size) + '.mp4'
+                            count = 0
+                            for i in range(100):
+                                if (os.path.isfile(directory + '/' + 'twitter' + '0' + str(i) + '.mp4') == True):
+                                    count += 1
+                                    final_name = 'twitter' + '0' + str(count) + '.mp4'
+                                else:
+                                    break
+                            twitter.to_videofile(final_name)
+                            shutil.rmtree(temp_dir)
+                            decoded.append('twittervideo')
+                            return True
+                        else:
+                         shutil.rmtree(temp_dir) 
+                         return False
+
+                    elif (m3u8c != None):
+                        tipo='m4s'
+                        urllib.request.urlretrieve(video, temp_dir + '/temp.txt')
+                        with open (temp_dir + "/temp.txt", "r") as tempF:
+                            for line in tempF:
+                                if(re.search(r'.m3u8', line) != None):
+                                    m3u8c2 = 'https://video.twimg.com' + line
+                                    continue
+                        tempF.close()
+                        urllib.request.urlretrieve(m3u8c2, temp_dir + '/temp.txt')
+                        with open (temp_dir + "/temp.txt", "r") as tempF:
+                            for line in tempF:
+                                if(re.search(r'.ts', line) != None):
+                                    encoded.append('https://video.twimg.com' + line)
+                                    tipo = 'ts'
+                        tempF.close()
+                        directory = os.getcwd()
+                        collection =[]
+                        if (tipo == 'ts'):
+                            for i in range(len(encoded)):
+                                name = temp_dir + '/temp' + '0' + str(i) + ' .ts'
+                                urllib.request.urlretrieve(encoded[i], name)
+                                video = VideoFileClip(name)
+                                collection.append(video)
+                                twitter = concatenate_videoclips(collection)
+                                size = len(decoded)
+                                final_name = 'twitter' + '0' + str(size) + '.mp4'
+                            count = 0
+                            for i in range(100):
+                                if (os.path.isfile(directory + '/' + 'twitter' + '0' + str(i) + '.mp4') == True):
+                                    count += 1
+                                    final_name = 'twitter' + '0' + str(count) + '.mp4'
+                                else:
+                                    break
+                            twitter.to_videofile(final_name)
+                            shutil.rmtree(temp_dir)
+                            decoded.append('twittervideo')
+                            return True
+                        else:
+                            shutil.rmtree(temp_dir)
+                            return False
+
+                else:
+                    tipo='m4s'
+                    encoded = []
+                    with open (temp_dir + "/items.json", "r") as jsonFile:
+                        json_decoded = json.load(jsonFile)
+                        for i in range(len(json_decoded)):
+                            if(re.search('"(.*?).ts', json_decoded[i]['name']) != None):
+                                encoded.append(json_decoded[i]['name'])
+                                tipo='ts'
+                    jsonFile.close()
                     directory = os.getcwd()
                     collection =[]
-                    for i in range(len(encoded)):
-                        name ='temp' + '0' + str(i) + ' .ts'
-                        urllib.request.urlretrieve(encoded[i], name)
-                        video = VideoFileClip(directory + '/' + name)
-                        collection.append(video)
-                    twitter = concatenate_videoclips(collection)
-                    size = len(decoded)
-                    name = 'twitter' + '0' + str(size) + '.mp4'
-                    count = 0
-                    for i in range(100):
-                        if (os.path.isfile(directory + '/' + 'twitter' + '0' + str(i) + '.mp4') == True):
-                            count += 1
-                            name = 'twitter' + '0' + str(count) + '.mp4'
-                        else:
-                            break
-                    twitter.to_videofile(name)
-                    for i in range(len(encoded)):
-                        os.remove(directory + '/temp' + '0' + str(i) + ' .ts')
-                    os.remove(directory + '/temp.txt')
-                    os.remove(directory + '/items.json')
-                    decoded.append('twittervideo')
-                    return True
+                    if (tipo == 'ts'):
+                        for i in range(len(encoded)):
+                            name = temp_dir + '/temp' + '0' + str(i) + ' .ts'
+                            urllib.request.urlretrieve(encoded[i], name)
+                            video = VideoFileClip(name)
+                            collection.append(video)
+                            twitter = concatenate_videoclips(collection)
+                            size = len(decoded)
+                            final_name = 'twitter' + '0' + str(size) + '.mp4'
+                            count = 0
+                        for i in range(100):
+                            if (os.path.isfile(directory + '/' + 'twitter' + '0' + str(i) + '.mp4') == True):
+                                count += 1
+                                final_name = 'twitter' + '0' + str(count) + '.mp4'
+                            else:
+                                break
+                        twitter.to_videofile(final_name)
+                        shutil.rmtree(temp_dir)
+                        decoded.append('twittervideo')
+                        return True
+                    else:
+                        shutil.rmtree(temp_dir)
+                        return False
 
-                elif (m3u8c != None):
-                    urllib.request.urlretrieve(video, 'temp.txt')
-                    with open ("temp.txt", "r") as temp:
-                        for line in temp:
-                            if(re.search(r'.m3u8', line) != None):
-                                m3u8c2 = 'https://video.twimg.com' + line
-                            continue
-                    temp.close()
-                    urllib.request.urlretrieve(m3u8c2, 'temp.txt')
-                    with open ("temp.txt", "r") as temp:
-                        for line in temp:
-                            if(re.search(r'.ts', line) != None):
-                                encoded.append('https://video.twimg.com' + line)
-                            continue
-                    temp.close()
-                    directory = os.getcwd()
-                    collection =[]
-                    for i in range(len(encoded)):
-                        name ='temp' + '0' + str(i) + ' .ts'
-                        urllib.request.urlretrieve(encoded[i], name)
-                        video = VideoFileClip(directory + '/' + name)
-                        collection.append(video)
-                    twitter = concatenate_videoclips(collection)
-                    size = len(decoded)
-                    name = 'twitter' + '0' + str(size) + '.mp4'
-                    count = 0
-                    for i in range(100):
-                        if (os.path.isfile(directory + '/' + 'twitter' + '0' + str(i) + '.mp4') == True):
-                            count += 1
-                            name = 'twitter' + '0' + str(count) + '.mp4'
-                        else:
-                            break
-                    twitter.to_videofile(name)
-                    for i in range(len(encoded)):
-                        os.remove(directory + '/temp' + '0' + str(i) + ' .ts')
-                    os.remove(directory + '/temp.txt')
-                    os.remove(directory + '/items.json')
-                    decoded.append('twittervideo')
-                    return True
-
-        elif(response == 'Navegador'):
+    elif(response == 'Navegador'):
             if (formato == '.jpg'):
                 firefox.get(url)
                 time.sleep(5)
@@ -286,7 +328,7 @@ def auth(button):
             title = firefox.title
             if (title == "Login • Instagram"):
                 firefox.quit()
-                return 0
+                return False
             else:
                 return True
 
