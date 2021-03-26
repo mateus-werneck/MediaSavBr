@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from moviepy.editor import *
+from moviepy.editor import VideoFileClip, concatenate_videoclips
 from natsort import natsorted
 
 
@@ -36,12 +36,24 @@ def getMedia(url, formato, response, media):
                 if (url != ''):
                     size = len(decoded) - 1
                     if (response == 'Computador'):
-                        if (formato == ' .jpg'):
+                        if (formato == '.jpg'):
                             name = 'instagram' + '0' + str(size) + formato
+                            for i in range(100):
+                                if (os.path.isfile(directory + '/' + 'instagram' + '0' + str(i) + '.jpg') == True):
+                                    count += 1
+                                    name = 'instagram' + '0' + str(count) + '.jpg'
+                                else:
+                                    break
                             urllib.request.urlretrieve(decoded[size], name)
                             return True
-                        elif(formato == ' .mp4'):
+                        elif(formato == '.mp4'):
                             name = 'instagram' + '0' + str(size) + formato
+                            for i in range(100):
+                                if (os.path.isfile(directory + '/' + 'instagram' + '0' + str(i) + '.mp4') == True):
+                                    count += 1
+                                    name = 'instagram' + '0' + str(count) + '.mp4'
+                                else:
+                                    break
                             urllib.request.urlretrieve(decoded[size], name)
                             return True
                         elif(response == 'Navegador'):
@@ -64,12 +76,24 @@ def getMedia(url, formato, response, media):
                 decoded.append(firefox.find_element_by_tag_name("img").get_attribute("src"))
                 size = len(decoded) - 1
                 name = 'instagram' + '0' + str(size) + formato
+                for i in range(100):
+                    if (os.path.isfile(directory + '/' + 'instagram' + '0' + str(i) + '.jpg') == True):
+                        count += 1
+                        name = 'instagram' + '0' + str(count) + '.jpg'
+                    else:
+                        break
                 urllib.request.urlretrieve(decoded[size], name)
                 return True
             elif(formato == ' .mp4'):
                 decoded.append(firefox.find_element_by_tag_name('source').get_attribute("src"))
                 size = len(decoded) - 1
                 name = 'instagram' + '0' + str(size) + formato
+                for i in range(100):
+                    if (os.path.isfile(directory + '/' + 'instagram' + '0' + str(i) + '.mp4') == True):
+                        count += 1
+                        name = 'instagram' + '0' + str(count) + '.mp4'
+                    else:
+                        break
                 urllib.request.urlretrieve(decoded[size], name)
                 return True
 
@@ -85,7 +109,7 @@ def getMedia(url, formato, response, media):
 
     elif(media.group(0) == 'https://twitter.com/'):
         if (response == 'Computador'):
-            if (formato == ' .jpg'):
+            if (formato == '.jpg'):
                 firefox.get(url)
                 time.sleep(4)
                 media = firefox.find_elements_by_css_selector('img.css-9pa8cd[alt="Image"]')
@@ -93,8 +117,15 @@ def getMedia(url, formato, response, media):
                     decoded.append(pbs.get_attribute("src"))
                     size = len(decoded) - 1
                     name = 'twitter' + '0' + str(size) + formato
+                    count = 0
+                    for i in range(100):
+                        if (os.path.isfile(directory + '/' + 'twitter' + '0' + str(i) + '.jpg') == True):
+                            count += 1
+                            name = 'twitter' + '0' + str(count) + '.jpg'
+                        else:
+                            break
                     urllib.request.urlretrieve(decoded[size], name)
-                return True
+                    return True
 
             elif(formato == 'gif'):
                 firefox.get(url)
@@ -103,12 +134,19 @@ def getMedia(url, formato, response, media):
                 size = len(decoded) - 1
                 name = 'twitter' + '0' + str(size) + ' .mp4'
                 if (decoded[size] != ''):
+                    count = 0
+                    for i in range(100):
+                        if (os.path.isfile(directory + '/' + 'twitter' + '0' + str(i) + '.mp4') == True):
+                            count += 1
+                            name = 'twitter' + '0' + str(count) + '.mp4'
+                        else:
+                            break
                     urllib.request.urlretrieve(decoded[size], name)
                     return True
 
-            elif(formato == ' .mp4'):
+            elif(formato == '.mp4'):
                 firefox.get(url)
-                time.sleep(6)
+                time.sleep(10)
                 log = firefox.execute_script("var performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; var network = performance.getEntries() || {}; return network;")
                 video =''
                 with open("items.json", "w") as jsonFile:
@@ -131,26 +169,29 @@ def getMedia(url, formato, response, media):
                                 encoded.append('https://video.twimg.com' + line)
                             continue
                     temp.close()
+                    directory = os.getcwd()
+                    collection =[]
                     for i in range(len(encoded)):
                         name ='temp' + '0' + str(i) + ' .ts'
                         urllib.request.urlretrieve(encoded[i], name)
-                    L =[]
-                    directory = os.getcwd()
-                    for root, dirs, temps in os.walk(directory):
-                        temps = natsorted(temps)
-                        for temp in temps:
-                            if os.path.splitext(temp)[1] == '.ts':
-                                tempPath = os.path.join(root, temp)
-                                video = VideoFileClip(tempPath)
-                                L.append(video)
-                    twitter = concatenate_videoclips(L)
+                        video = VideoFileClip(directory + '/' + name)
+                        collection.append(video)
+                    twitter = concatenate_videoclips(collection)
                     size = len(decoded)
                     name = 'twitter' + '0' + str(size) + '.mp4'
+                    count = 0
+                    for i in range(100):
+                        if (os.path.isfile(directory + '/' + 'twitter' + '0' + str(i) + '.mp4') == True):
+                            count += 1
+                            name = 'twitter' + '0' + str(count) + '.mp4'
+                        else:
+                            break
                     twitter.to_videofile(name)
                     for i in range(len(encoded)):
                         os.remove(directory + '/temp' + '0' + str(i) + ' .ts')
                     os.remove(directory + '/temp.txt')
                     os.remove(directory + '/items.json')
+                    decoded.append('twittervideo')
                     return True
 
                 elif (m3u8c != None):
@@ -168,32 +209,33 @@ def getMedia(url, formato, response, media):
                                 encoded.append('https://video.twimg.com' + line)
                             continue
                     temp.close()
+                    directory = os.getcwd()
+                    collection =[]
                     for i in range(len(encoded)):
                         name ='temp' + '0' + str(i) + ' .ts'
                         urllib.request.urlretrieve(encoded[i], name)
-                    L =[]
-                    directory = os.getcwd()
-                    for root, dirs, temps in os.walk(directory):
-                        temps = natsorted(temps)
-                        for temp in temps:
-                            if os.path.splitext(temp)[1] == '.ts':
-                                tempPath = os.path.join(root, temp)
-                                video = VideoFileClip(tempPath)
-                                L.append(video)
-                    twitter = concatenate_videoclips(L)
+                        video = VideoFileClip(directory + '/' + name)
+                        collection.append(video)
+                    twitter = concatenate_videoclips(collection)
                     size = len(decoded)
                     name = 'twitter' + '0' + str(size) + '.mp4'
+                    count = 0
+                    for i in range(100):
+                        if (os.path.isfile(directory + '/' + 'twitter' + '0' + str(i) + '.mp4') == True):
+                            count += 1
+                            name = 'twitter' + '0' + str(count) + '.mp4'
+                        else:
+                            break
                     twitter.to_videofile(name)
                     for i in range(len(encoded)):
                         os.remove(directory + '/temp' + '0' + str(i) + ' .ts')
                     os.remove(directory + '/temp.txt')
                     os.remove(directory + '/items.json')
-                    os.remove(directory + '/geckodriver.log')
                     decoded.append('twittervideo')
                     return True
 
         elif(response == 'Navegador'):
-            if (formato == 'jpg'):
+            if (formato == '.jpg'):
                 firefox.get(url)
                 time.sleep(5)
                 decoded = firefox.find_element_by_css_selector('img.css-9pa8cd').get_attribute("src")
