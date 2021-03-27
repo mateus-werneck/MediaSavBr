@@ -103,7 +103,7 @@
    ```
 2. Extract it anywhere you want
 
-3. Execute MediaSaverEN.py
+3. Open MediaSaverEN
 
 <br />
 
@@ -298,7 +298,7 @@
    ```
 2. Extraia a pasta MidiaSave para um lugar que achar melhor
 
-3. Abra o arquivo MidiaSaverBR.py
+3. Abra o arquivo MidiaSaverBR
 
 
 
