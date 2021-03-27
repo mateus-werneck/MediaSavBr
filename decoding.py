@@ -328,8 +328,20 @@ def auth(button):
             time.sleep(4)
             title = firefox.title
             if (title == "Login • Instagram"):
-                firefox.quit()
-                return False
+                time.sleep(1)
+                username = 'pythonauthusr123456'
+                usern = firefox.find_element_by_name("username")
+                usern.send_keys(username)
+                passw = firefox.find_element_by_name("password")
+                passw.send_keys(password)
+                time.sleep(1)
+                log_cl = firefox.find_element_by_class_name('sqdOP.L3NKy.y3zKF')
+                log_cl.click()
+                time.sleep(4)
+                title = firefox.title
+                if (title == "Login • Instagram"):
+                    firefox.quit()
+                    return False
             else:
                 return True
 
