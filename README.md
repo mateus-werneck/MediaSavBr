@@ -99,8 +99,12 @@
 
 1. Download the latest release
    ```sh
-   Download MediaSaver.EN.exe on https://github.com/mateus-werneck/MidiaSave/releases
+   Download MidiaSave.zip on https://github.com/mateus-werneck/MidiaSave/releases
    ```
+2. Extract it anywhere you want
+
+3. Execute MediaSaverEN.py
+
 <br />
 
 **Linux**
@@ -123,12 +127,12 @@
      ```
 5. Execute MediaSaver
    ```sh
-    python3 english_main.py
+    python3 MediaSaverEN.py
     ```
 6.Create an Alias (Optional)
 
    ```sh
-    1. sudo nano ~/.bash_aliases  2.Then type: alias mediasave='python3 ~/MidiaSave/english_main.py'  3. Save file  4. source ~/.bash_aliases
+    1. sudo nano ~/.bash_aliases  2.Then type: alias mediasave='python3 ~/MidiaSave/MediaSaverEN.py'  3. Save file  4. source ~/.bash_aliases
    ```
 
 
@@ -290,8 +294,14 @@
 
 1. Baixe a versão mais recente
    ```sh
-   Baixe o arquivo MidiaSave.BR.exe em https://github.com/mateus-werneck/MidiaSave/releases
+   Baixe o arquivo MidiaSave.zip em https://github.com/mateus-werneck/MidiaSave/releases
    ```
+2. Extraia a pasta MidiaSave para um lugar que achar melhor
+
+3. Abra o arquivo MidiaSaverBR.py
+
+
+
 <br />
 
 **Linux**
