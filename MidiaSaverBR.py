@@ -1,7 +1,5 @@
-import wx, re, os, time
-from decoding import getMedia, auth, killFirefox
-
-
+import wx, re, time
+from decoding import getMedia, killFirefox
 
 formato='.jpg'
 button = 0
@@ -93,9 +91,6 @@ class Frame(wx.Frame):
         if resp == wx.ID_YES:
             self.Destroy()
             killFirefox()
-            os.remove(os.getcwd() + '/geckodriver.log')
-        
-
         else:
             event.Skip()
     #RadioButton Event
@@ -151,16 +146,11 @@ class Frame(wx.Frame):
                 self.Aguarde()
                 self.response='Computador'
                 time.sleep(1)
-                if (auth(button) == True):
-                    if(getMedia(self.url, self.tipo, self.response, self.posts) == True):
-                        self.MessageSave()
-                        button += 1
-                    else:
-                        self.MessageErro()
-
+                if(getMedia(self.url, self.tipo, self.response, self.posts, button) == True):    
+                    self.MessageSave()
+                    button += 1
                 else:
-                    self.MessageAuth()
-
+                    self.MessageErro()
 
             else:
                 dlg2 = wx.MessageDialog(None, 'Deseja abrir no seu navegador?', 'Salvar ou Abrir No Navegador',
@@ -170,19 +160,14 @@ class Frame(wx.Frame):
                     self.Aguarde()
                     self.response='Navegador'
                     time.sleep(1)
-                    if (auth(button) == True):
-                        if(getMedia(self.url, self.tipo, self.response, self.posts) == True):
-                            self.MessageSave()
-                            button += 1
-                        else:
-                            self.MessageErro()
-
+                    if(getMedia(self.url, self.tipo, self.response, self.posts, button) == True):  
+                        self.MessageSave()
+                        button += 1
                     else:
-                        self.MessageAuth()
-
-
+                        self.MessageErro()
                 else:
                     event.Skip()
+        
         elif (self.stories != None):
             dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', 'Salvar ou Abrir No Navegador',
             wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
@@ -191,15 +176,11 @@ class Frame(wx.Frame):
                 self.Aguarde()
                 self.response='Computador'
                 time.sleep(1)
-                if (auth(button) == True):
-                    if(getMedia(self.url, self.tipo, self.response, self.stories) == True):
-                        self.MessageSave()
-                        button += 1
-                    else:
-                        self.MessageErro()
-
+                if(getMedia(self.url, self.tipo, self.response, self.stories, button) == True): 
+                    self.MessageSave()
+                    button += 1
                 else:
-                    self.MessageAuth()
+                    self.MessageErro()
 
             else:
                 dlg2 = wx.MessageDialog(None, 'Deseja abrir no seu navegador?', '',
@@ -209,19 +190,17 @@ class Frame(wx.Frame):
                     self.Aguarde()
                     self.response='Navegador'
                     time.sleep(1)
-                    if (auth(button) == True):
-                        if(getMedia(self.url, self.tipo, self.response, self.stories) == True):
-                            self.MessageSave()
-                            button += 1
-                        else:
-                            self.MessageErro()
-
+                    if(getMedia(self.url, self.tipo, self.response, self.stories, button) == True):
+                        self.MessageSave()
+                        button += 1
                     else:
-                        self.MessageAuth()
+                        self.MessageErro()
 
+                   
 
                 else:
                     event.Skip()
+        
         elif (self.twt != None):
             dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', 'Salvar ou Abrir No Navegador',
             wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
@@ -230,9 +209,9 @@ class Frame(wx.Frame):
                 self.Aguarde()
                 self.response='Computador'
                 time.sleep(1) 
-                if(getMedia(self.url, self.tipo, self.response, self.twt) == True):
+                if(getMedia(self.url, self.tipo, self.response, self.twt, button) == True):
                     self.MessageSave()
-                elif (getMedia(self.url, self.tipo, self.response, self.twt) == False):
+                elif (getMedia(self.url, self.tipo, self.response, self.twt, button) == False):
                     self.MessageM4s()
                 else:
                     self.MessageErro()
@@ -245,7 +224,7 @@ class Frame(wx.Frame):
                     self.Aguarde()
                     self.response='Navegador'
                     time.sleep(1)
-                    if(getMedia(self.url, self.tipo, self.response, self.twt) == True):
+                    if(getMedia(self.url, self.tipo, self.response, self.twt, button) == True):
                         self.MessageSave()
                     else:
                         self.MessageErro()
