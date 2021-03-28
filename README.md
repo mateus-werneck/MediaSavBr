@@ -99,11 +99,11 @@
 
 1. Download the latest release
    ```sh
-   Download MidiaSave.zip on https://github.com/mateus-werneck/MidiaSave/releases
+   Download MediaSaver_EN.zip on https://github.com/mateus-werneck/MidiaSave/releases
    ```
 2. Extract it anywhere you want
 
-3. Open MediaSaverEN
+3. Open MediaSaver
 
 <br />
 
@@ -294,11 +294,11 @@
 
 1. Baixe a versão mais recente
    ```sh
-   Baixe o arquivo MidiaSave.zip em https://github.com/mateus-werneck/MidiaSave/releases
+   Baixe o arquivo MidiaSave_BR.zip em https://github.com/mateus-werneck/MidiaSave/releases
    ```
-2. Extraia a pasta MidiaSave para um lugar que achar melhor
+2. Extraia a pasta MidiaSave para o lugar que achar melhor
 
-3. Abra o arquivo MidiaSaverBR
+3. Abra o arquivo MidiaSaver
 
 
 
