@@ -1,9 +1,8 @@
-import wx, re
-from decoding import getMedia, auth, killFirefox
+import wx, re, time
+from decoding import getMedia, killFirefox
 
-formato=' .jpg'
+formato= '.jpg'
 button = 0
-
 def getTipo():
     global formato
     return formato
@@ -86,28 +85,26 @@ class Frame(wx.Frame):
 
     #CloseButton Event
     def OnCloseWindow(self, event):
-        dial = wx.MessageDialog(None, 'Deseja sair?', 'Sair',
+        dial = wx.MessageDialog(None, 'Close the program?', 'Exit',
         wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
         resp = dial.ShowModal()
         if resp == wx.ID_YES:
             self.Destroy()
             killFirefox()
-            os.remove(os.getcwd() + '/geckodriver.log')
-            exit()
-
         else:
             event.Skip()
+    
     #RadioButton Event
     def FileType(self, event):
         state1 = self.rb1.GetValue()
         state2 = self.rb2.GetValue()
         state3 = self.rb3.GetValue()
         if (state2 == True):
-            self.tipo=' .mp4'
+            self.tipo='.mp4'
         elif (state3 == True):
             self.tipo= 'gif'
         else:
-            self.tipo=' .jpg'
+            self.tipo='.jpg'
         setTipo(self.tipo)
     #Save to PC Message
     def MessageSave(self):
@@ -150,17 +147,14 @@ class Frame(wx.Frame):
             resp = dlg.ShowModal()
             if resp == wx.ID_YES:
                 self.Aguarde()
-                self.response='Computador'
-                time.sleep(1)                     
-                if (auth(button) == True):
-                    if(getMedia(self.url, self.tipo, self.response, self.posts) == True):
-                        self.MessageSave()
-                        button += 1
-                    else:
-                        self.MessageErro()
-
+                self.response='Computador'                     
+                time.sleep(1)
+                if(getMedia(self.url, self.tipo, self.response, self.posts, button) == True):    
+                    self.MessageSave()
+                    button += 1
                 else:
-                    self.MessageAuth()
+                    self.MessageErro()
+
             else:
                 dlg2 = wx.MessageDialog(None, 'Would you like to open in your browser?', '',
                 wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
@@ -169,15 +163,13 @@ class Frame(wx.Frame):
                     self.Aguarde()
                     self.response='Navegador'
                     time.sleep(1)
-                    if (auth(button) == True):
-                        if(getMedia(self.url, self.tipo, self.response, self.posts) == True):
-                            self.MessageSave()
-                            button += 1
-                        else:
-                            self.MessageErro()
-
+                    if(getMedia(self.url, self.tipo, self.response, self.posts, button) == True):    
+                        self.MessageSave()
+                        button += 1
                     else:
-                        self.MessageAuth()
+                        self.MessageErro()
+
+                    
 
                 else:
                     event.Skip()
@@ -189,15 +181,11 @@ class Frame(wx.Frame):
                 self.Aguarde()
                 self.response='Computador'
                 time.sleep(1)
-                if (auth(button) == True):
-                    if(getMedia(self.url, self.tipo, self.response, self.stories) == True):
-                        self.MessageSave()
-                        button += 1
-                    else:
-                        self.MessageErro()
-
+                if(getMedia(self.url, self.tipo, self.response, self.posts, button) == True):    
+                    self.MessageSave()
+                    button += 1
                 else:
-                    self.MessageAuth()
+                    self.MessageErro()
 
             else:
                 dlg2 = wx.MessageDialog(None, 'Would you like to open in your browser?', '',
@@ -207,29 +195,25 @@ class Frame(wx.Frame):
                     self.Aguarde()
                     self.response='Navegador'
                     time.sleep(1)
-                    if (auth(button) == True):
-                        if(getMedia(self.url, self.tipo, self.response, self.stories) == True):
-                            self.MessageSave()
-                            button += 1
-                        else:
-                            self.MessageErro()
-
+                    if(getMedia(self.url, self.tipo, self.response, self.posts, button) == True):    
+                        self.MessageSave()
+                        button += 1
                     else:
-                        self.MessageAuth()
-
+                        self.MessageErro()
                 else:
                     event.Skip()
+        
         elif (self.twt != None):
-            dlg = wx.MessageDialog(None, 'Would you like to save to your pc?', 'Save or Open in Browser?',
+            dlg = wx.MessageDialog(None, 'Would you like to save to your pc?', 'Save or Open in Browser',
             wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
             resp = dlg.ShowModal()
             if resp == wx.ID_YES:
                 self.Aguarde()
                 self.response='Computador'
                 time.sleep(1)
-                if(getMedia(self.url, self.tipo, self.response, self.twt) == True):
+                if(getMedia(self.url, self.tipo, self.response, self.twt, button) == True):
                     self.MessageSave()
-                elif (getMedia(self.url, self.tipo, self.response, self.twt) == False):
+                elif (getMedia(self.url, self.tipo, self.response, self.twt, button) == False):
                     self.MessageM4s()
                 else:
                     self.MessageErro()
@@ -241,7 +225,7 @@ class Frame(wx.Frame):
                 if resp == wx.ID_YES:
                     self.Aguarde()
                     self.response='Navegador'
-                    if(getMedia(self.url, self.tipo, self.response, self.twt) == True):
+                    if(getMedia(self.url, self.tipo, self.response, self.twt, button) == True):
                         self.MessageSave()
                     else:
                         self.MessageErro()
