@@ -1,28 +1,156 @@
-import wx, re, time
+import wx, re, time, os
 from decoding import getMedia, killFirefox
+from threading import *
 
 formato='.jpg'
 button = 0
+EVT_RESULT_ID = wx.NewId()
+ID_START = wx.NewId()
+url=''
+
 def getTipo():
     global formato
     return formato
+
 def setTipo(tipo):
     global formato
     formato=tipo
+######################################################Thread Class##########################################################################################
+def EVT_RESULT(win, func):
+    win.Connect(-1, -1, EVT_RESULT_ID, func)
 
+class ResultEvent(wx.PyEvent):
+    def __init__(self, data):
+        wx.PyEvent.__init__(self)
+        self.SetEventType(EVT_RESULT_ID)
+        self.data = data
+class WorkerThread(Thread):
+    """Worker Thread Class."""
+    def __init__(self, notify_window):
+        """Init Worker Thread Class."""
+        Thread.__init__(self)
+        self._notify_window = notify_window
+        self._want_abort = 0
+        self.start()
+    #Open URL Message
+    def MessageBrowser(self):
+        wx.MessageBox('O link foi aberto no seu navegador!', '',
+        wx.OK | wx.ICON_INFORMATION)
+    #Wait MessageBox
+    def Aguarde(self):
+        wx.MessageBox('Isso pode demorar até 1 minuto.', 'Aguarde um instante',
+        wx.OK | wx.ICON_INFORMATION)
+
+    def MessageErro(self):
+        wx.MessageBox('Erro, tente novamente.', '',
+        wx.OK | wx.ICON_INFORMATION)
+
+    def MessageM4s(self):
+        wx.MessageBox('Formato de video inválido tente outro.', 'Erro',
+        wx.OK | wx.ICON_INFORMATION)
+
+    def run(self):
+        global button
+        global url
+        self.tipo = getTipo()
+        self.url = url
+        self.stories = re.search('https://www.instagram.com/stories', self.url)
+        self.posts = re.search('https://www.instagram.com/p', self.url)
+        self.twt = re.search('https://twitter.com/', self.url)
+
+########################################################## Instagram Posts ##################################################################################        
+        if (self.posts != None):
+            dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', '',
+            wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
+            resp = dlg.ShowModal()
+            if resp == wx.ID_YES:
+                self.Aguarde()
+                self.response='Computador'
+                time.sleep(1)
+                if(getMedia(self.url, self.tipo, self.response, self.posts, button) == True):    
+                    button += 1
+            else:
+                dlg2 = wx.MessageDialog(None, 'Deseja abrir no seu navegador?', 'Salvar ou Abrir No Navegador',
+                wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
+                resp = dlg2.ShowModal()
+                if resp == wx.ID_YES:
+                    self.Aguarde()
+                    self.response='Navegador'
+                    time.sleep(1)
+                    if(getMedia(self.url, self.tipo, self.response, self.posts, button) == True):  
+                        button += 1
+                else:
+                    event.Skip()
+########################################################## Instagram Stories ##################################################################################        
+        elif (self.stories != None):
+            dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', 'Salvar ou Abrir No Navegador',
+            wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
+            resp = dlg.ShowModal()
+            if resp == wx.ID_YES:
+                self.Aguarde()
+                self.response='Computador'
+                time.sleep(1)
+                if(getMedia(self.url, self.tipo, self.response, self.stories, button) == True): 
+                    button += 1
+            else:
+                dlg2 = wx.MessageDialog(None, 'Deseja abrir no seu navegador?', '',
+                wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
+                resp = dlg2.ShowModal()
+                if resp == wx.ID_YES:
+                    self.Aguarde()
+                    self.response='Navegador'
+                    time.sleep(1)
+                    if(getMedia(self.url, self.tipo, self.response, self.stories, button) == True):
+                        button += 1
+                else:
+                    event.Skip()
+########################################################## Twitter Media ##################################################################################         
+        elif (self.twt != None):
+            dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', 'Salvar ou Abrir No Navegador',
+            wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
+            resp = dlg.ShowModal()
+            if resp == wx.ID_YES:
+                self.Aguarde()
+                self.response='Computador'
+                time.sleep(1) 
+                getMedia(self.url, self.tipo, self.response, self.twt, button)
+            
+            else:
+                dlg2 = wx.MessageDialog(None, 'Deseja abrir no seu navegador?', '',
+                wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
+                resp = dlg2.ShowModal()
+                if resp == wx.ID_YES:
+                    self.Aguarde()
+                    self.response='Navegador'
+                    time.sleep(1)
+                    getMedia(self.url, self.tipo, self.response, self.twt, button) 
+        
+        
+        if self._want_abort:
+            wx.PostEvent(self._notify_window, ResultEvent(None))
+            return
+        wx.PostEvent(self._notify_window, ResultEvent(True))
+
+    def abort(self):
+        """abort worker thread."""
+        self._want_abort = 1            
+
+########################################################################################################################
 #Frame class constructor
 class Frame(wx.Frame):
     def __init__(self, parent, title):
         super(Frame, self).__init__(parent, title=title)
-        #tipo='jpg'
         self.Panel()
         self.Centre()
         self.SetSize(500,220)
-
+        
+###########################################################################################################################
+#Panel
     def Panel(self):
 
         panel = wx.Panel(self)
         #Setting FONT
+        
         font = wx.SystemSettings.GetFont(wx.SYS_SYSTEM_FONT)#font type
         font.SetPointSize(11) #font size
         #Box Sizers
@@ -38,7 +166,7 @@ class Frame(wx.Frame):
         vbox.Add(hbox1, flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP, border=10)#Adjusting FRAME
 
         vbox.Add((-1, 32))# Adjust Vertical Position
-
+############################################################################################################################
         #CheckBoxes Static Text
         hbox2 = wx.BoxSizer(wx.HORIZONTAL)
         st2 = wx.StaticText(panel, label='Escolha o Tipo do Arquivo:')
@@ -65,24 +193,35 @@ class Frame(wx.Frame):
 
         #Buttons
         hbox5 = wx.BoxSizer(wx.HORIZONTAL)
-        btn1 = wx.Button(panel, label='Salvar', size=(70, 30))
+        btn1 = wx.Button(panel, ID_START, label='Salvar', size=(90, 90))
         hbox5.Add(btn1)
-        btn2 = wx.Button(panel, label='Fechar', size=(70, 30))
-        hbox5.Add(btn2, flag=wx.LEFT|wx.BOTTOM, border=5)
+        btn2 = wx.Button(panel, label='Fechar', size=(90, 90))
+        hbox5.Add(btn2)
 
 
-        vbox.Add(hbox5, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=10)
-
-        #Call vbox Adjustments
+        vbox.Add(hbox5, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=5)
+#########################################################################################################################################
+        #Adjustments
         panel.SetSizer(vbox)
+
+
+        self.CreateStatusBar()
+        
+        self.worker = None
+        
+        self.Bind(wx.EVT_BUTTON, self.OnSave, id=ID_START)
+        
+        EVT_RESULT(self,self.OnResult)
 
         self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
         self.Bind(wx.EVT_BUTTON, self.OnCloseWindow, id=btn2.GetId())
-        self.Bind(wx.EVT_BUTTON, self.OnSave, id=btn1.GetId())
+        self.Bind(wx.EVT_BUTTON, self.OnSave, id=ID_START)
         self.Bind(wx.EVT_RADIOBUTTON, self.FileType)
         self.Bind(wx.EVT_TEXT_ENTER, self.OnSave)
 
-
+###################################################################################################
+#Events    
+    
     #CloseButton Event
     def OnCloseWindow(self, event):
         dial = wx.MessageDialog(None, 'Deseja sair?', 'Sair',
@@ -93,6 +232,7 @@ class Frame(wx.Frame):
             killFirefox()
         else:
             event.Skip()
+    
     #RadioButton Event
     def FileType(self, event):
         state1 = self.rb1.GetValue()
@@ -105,141 +245,42 @@ class Frame(wx.Frame):
         else:
             self.tipo='.jpg'
         setTipo(self.tipo)
-    #Save to PC Message
-    def MessageSave(self):
-        wx.MessageBox('Arquivo salvo com sucesso!', '',
-        wx.OK | wx.ICON_INFORMATION)
-    #Open URL Message
-    def MessageBrowser(self):
-        wx.MessageBox('O link foi aberto no seu navegador!', '',
-        wx.OK | wx.ICON_INFORMATION)
-    #Wait MessageBox
-    def Aguarde(self):
-        wx.MessageBox('Isso pode demorar até 1 minuto.', 'Aguarde um instante',
-        wx.OK | wx.ICON_INFORMATION)
-
-    def MessageErro(self):
-        wx.MessageBox('Erro, tente novamente.', '',
-        wx.OK | wx.ICON_INFORMATION)
-
-    def MessageAuth(self):
-        wx.MessageBox('Não foi possível logar no Instagram.', 'Erro de Autenticação',
-        wx.OK | wx.ICON_INFORMATION)
-
-    def MessageM4s(self):
-        wx.MessageBox('Formato de video inválido tente outro.', 'Erro',
-        wx.OK | wx.ICON_INFORMATION)
-
+    
     #Save Button
     def OnSave(self, event):
-        global button
-        self.tipo = getTipo()
-        self.url = self.field1.GetValue()
-        self.stories = re.search('https://www.instagram.com/stories', self.url)
-        self.posts = re.search('https://www.instagram.com/p', self.url)
-        self.twt = re.search('https://twitter.com/', self.url)
-        if (self.posts != None):
-            dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', '',
-            wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
-            resp = dlg.ShowModal()
-            if resp == wx.ID_YES:
-                self.Aguarde()
-                self.response='Computador'
-                time.sleep(1)
-                if(getMedia(self.url, self.tipo, self.response, self.posts, button) == True):    
-                    self.MessageSave()
-                    button += 1
-                else:
-                    self.MessageErro()
-
-            else:
-                dlg2 = wx.MessageDialog(None, 'Deseja abrir no seu navegador?', 'Salvar ou Abrir No Navegador',
-                wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
-                resp = dlg2.ShowModal()
-                if resp == wx.ID_YES:
-                    self.Aguarde()
-                    self.response='Navegador'
-                    time.sleep(1)
-                    if(getMedia(self.url, self.tipo, self.response, self.posts, button) == True):  
-                        self.MessageSave()
-                        button += 1
-                    else:
-                        self.MessageErro()
-                else:
-                    event.Skip()
-        
-        elif (self.stories != None):
-            dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', 'Salvar ou Abrir No Navegador',
-            wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
-            resp = dlg.ShowModal()
-            if resp == wx.ID_YES:
-                self.Aguarde()
-                self.response='Computador'
-                time.sleep(1)
-                if(getMedia(self.url, self.tipo, self.response, self.stories, button) == True): 
-                    self.MessageSave()
-                    button += 1
-                else:
-                    self.MessageErro()
-
-            else:
-                dlg2 = wx.MessageDialog(None, 'Deseja abrir no seu navegador?', '',
-                wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
-                resp = dlg2.ShowModal()
-                if resp == wx.ID_YES:
-                    self.Aguarde()
-                    self.response='Navegador'
-                    time.sleep(1)
-                    if(getMedia(self.url, self.tipo, self.response, self.stories, button) == True):
-                        self.MessageSave()
-                        button += 1
-                    else:
-                        self.MessageErro()
-
-                   
-
-                else:
-                    event.Skip()
-        
-        elif (self.twt != None):
-            dlg = wx.MessageDialog(None, 'Deseja salvar no seu computador?', 'Salvar ou Abrir No Navegador',
-            wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
-            resp = dlg.ShowModal()
-            if resp == wx.ID_YES:
-                self.Aguarde()
-                self.response='Computador'
-                time.sleep(1) 
-                if(getMedia(self.url, self.tipo, self.response, self.twt, button) == True):
-                    self.MessageSave()
-                elif (getMedia(self.url, self.tipo, self.response, self.twt, button) == False):
-                    self.MessageM4s()
-                else:
-                    self.MessageErro()
-
-            else:
-                dlg2 = wx.MessageDialog(None, 'Deseja abrir no seu navegador?', '',
-                wx.YES_NO | wx.YES_DEFAULT | wx.ICON_QUESTION)
-                resp = dlg2.ShowModal()
-                if resp == wx.ID_YES:
-                    self.Aguarde()
-                    self.response='Navegador'
-                    time.sleep(1)
-                    if(getMedia(self.url, self.tipo, self.response, self.twt, button) == True):
-                        self.MessageSave()
-                    else:
-                        self.MessageErro()
-
-
+      global url
+      url = self.field1.GetValue()
+      if (url == ''):
+        dlg3 = wx.MessageBox('Voce não inseriu um link', '',
+                            wx.OK | wx.ICON_INFORMATION)
+        event.Skip()
+      else:    
+        if not self.worker:
+            self.worker = WorkerThread(self)
+            self.SetStatusText('Salvando seu link...')  
+       
+    #On getMedia() result
+    def OnResult(self, event):
+        """Show Result status."""
+        if event.data is None:
+            self.SetStatusText('Operação cancelada.')
+        elif event.data is False:
+            self.MessageM4s()
         else:
-            dlg3 = wx.MessageBox('Voce não inseriu um link', '',
-            wx.OK | wx.ICON_INFORMATION)
-            event.Skip()
+            self.SetStatusText('Arquivo salvo com sucesso.')
+            self.MessageSave()
+        self.worker = None   
+
+     #Save to PC Message
+    def MessageSave(self):
+        wx.MessageBox('Arquivo salvo com sucesso!', 'Finalizado',
+        wx.OK | wx.ICON_INFORMATION)  
 
 
 def main():
 
     app = wx.App()
-    dlg = Frame(None, title='Media Saver')
+    dlg = Frame(None, title='Midia Save')
     dlg.Show()
     app.MainLoop()
 
