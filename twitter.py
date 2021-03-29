@@ -14,23 +14,31 @@ def getTwitter(url, response, formato, firefox, decoded):
             firefox.get(url)
             time.sleep(4)
             media = firefox.find_elements_by_css_selector('img.css-9pa8cd[alt="Image"]')
+            name =''
             n = 0
             for pbs in media:
                 decoded.append(pbs.get_attribute("src"))
                 n +=1
-                size = len(decoded) - 1
-                name = 'twitter' + '0' + str(size) + formato
+                size = len(decoded)
+                continue
             count = 0
             for i in range(100):
                 if (os.path.isfile(os.getcwd() + '/' + 'twitter' + '0' + str(i) + '.jpg') == True):
                     count += 1
-                    name = 'twitter' + '0' + str(count) + '.jpg'
+                    continue
                 else:
                     break
-            for i in range (n):
-                name = 'twitter' + '0' + str(i + count) + '.jpg'
-                urllib.request.urlretrieve(decoded[i + count], name)
-            return True
+            i = 0
+            for i in range (size):
+                if (count == 0):
+                    name = 'twitter' + '0' + str(i) + '.jpg'
+                    urllib.request.urlretrieve(decoded[i], name)
+                    continue
+                else:
+                    name = 'twitter' + '0' + str(i+count) + '.jpg'
+                    urllib.request.urlretrieve(decoded[i], name)
+                    continue
+                return True
 
         elif(formato == 'gif'):
             firefox.get(url)
