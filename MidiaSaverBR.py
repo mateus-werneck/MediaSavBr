@@ -142,7 +142,7 @@ class Frame(wx.Frame):
         super(Frame, self).__init__(parent, title=title)
         self.Panel()
         self.Centre()
-        self.SetSize(500,220)
+        self.SetSize(500,250)
         
 ###########################################################################################################################
 #Panel
@@ -193,13 +193,13 @@ class Frame(wx.Frame):
 
         #Buttons
         hbox5 = wx.BoxSizer(wx.HORIZONTAL)
-        btn1 = wx.Button(panel, ID_START, label='Salvar', size=(90, 90))
+        btn1 = wx.Button(panel, ID_START, label='Salvar', size=(120, 50))
         hbox5.Add(btn1)
-        btn2 = wx.Button(panel, label='Fechar', size=(90, 90))
+        btn2 = wx.Button(panel, label='Fechar', size=(120, 50))
         hbox5.Add(btn2)
 
 
-        vbox.Add(hbox5, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=5)
+        vbox.Add(hbox5, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=10)
 #########################################################################################################################################
         #Adjustments
         panel.SetSizer(vbox)
